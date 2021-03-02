@@ -1,0 +1,1 @@
+web: gunicorn hr360.wsgi --log-file -
