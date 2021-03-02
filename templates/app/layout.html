@@ -1,0 +1,265 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/summernote/css/summernote-bs4.css' %}"> 
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
+
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/dataTables.bootstrap4.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/buttons.bootstrap4.css' %}"> 
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/select.bootstrap4.css' %}"> 
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/fixedHeader.bootstrap4.css' %}">  -->
+
+<!-- 
+
+    <link rel="stylesheet" href="{% static 'assets/vendor/charts/chartist-bundle/chartist.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/charts/morris-bundle/morris.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/charts/c3charts/c3.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/flag-icon-css/flag-icon.min.css' %}">
+
+ -->
+
+  
+
+    <link rel="icon" href="{% static 'img/hr_360.png' %}">
+    <title>{% block title %} HR360 {% endblock %}</title>
+</head>
+
+<body>
+    
+    <div class="dashboard-main-wrapper">
+       
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="#">
+                    <img class="imgLogo" width="100" height="auto" src="{% static 'img/hr_360.png' %}" alt="">   
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        
+                        
+
+                       
+
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'assets/images/user.png' %}" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">Hello, {{request.user.first_name}} {{request.user.last_name}} </h5>
+                                    <!-- <span class="status"></span><span class="ml-2">Available</span> -->
+                                </div>
+                                <!-- <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a> -->
+                                <a class="dropdown-item" href="{% url 'appusers:logout' %}"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                                <div id="submenu-1" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+
+                                        {% if user.is_authenticated %}
+
+
+                                       
+
+
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href=""> Home</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'appusers:dashboard'  %}"> Dashboard</a>
+                                        </li>
+
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'employee:all_employee'  %}"> Employee</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'payroll:all_employee_payroll_data'  %}"> Payroll</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href=""> Metrics</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href=""> Charts</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">  Partners</a>
+                                        </li>
+
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">  Settings</a>
+                                        </li>
+                                        
+
+                                        {% endif %}
+
+                                        
+                                        
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+
+                           
+                       
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+
+            {% block body %} 
+
+            {% endblock %}
+          
+            <div style="margin-top: 170px;" class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                             Copyright © 2020 HR360. All rights reserved. Powered by <a href="#">HR360</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+      
+    </div>
+
+   
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" ></script>
+  
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+   
+    <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script> 
+    <script src="{% static 'assets/vendor/summernote/js/summernote-bs4.js' %}"></script>
+   
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script> 
+    
+
+   
+
+  
+
+
+    <script>
+
+$(function() {
+
+var currentYear = (new Date).getFullYear();
+var currentMonth = (new Date).getMonth();
+var currentDay = (new Date).getDate();
+    
+ $('.datepicker').datepicker({
+    
+    uiLibrary: 'bootstrap4',
+    format: 'yyyy-mm-dd',
+    maxDate: new Date(currentYear, currentMonth, currentDay)
+        });
+
+    });
+    </script>
+
+
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 300
+
+        });
+    });
+
+
+
+
+
+
+
+
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode != 46 &&(charCode < 48 || charCode > 57)))
+        return false;
+    return true;
+}
+
+    </script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+    
+</body>
+ 
+</html>

@@ -1,0 +1,143 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/summernote/css/summernote-bs4.css' %}"> 
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css' %}">
+
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/dataTables.bootstrap4.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/buttons.bootstrap4.css' %}"> 
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/select.bootstrap4.css' %}"> 
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/css/fixedHeader.bootstrap4.css' %}">  -->
+
+<!-- 
+
+    <link rel="stylesheet" href="{% static 'assets/vendor/charts/chartist-bundle/chartist.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/charts/morris-bundle/morris.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/charts/c3charts/c3.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/flag-icon-css/flag-icon.min.css' %}">
+
+ -->
+
+  
+
+    <link rel="icon" href="{% static 'img/hr_360.png' %}">
+    <title>{% block title %} HR360 {% endblock %}</title>
+</head>
+
+<body>
+    
+    <div class="dashboard-main-wrapper">
+       
+       
+        
+        
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+
+            {% block body %} 
+
+            {% endblock %}
+          
+            
+         
+        </div>
+      
+    </div>
+
+   
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" ></script>
+  
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+   
+    <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script> 
+    <script src="{% static 'assets/vendor/summernote/js/summernote-bs4.js' %}"></script>
+   
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script> 
+    
+
+   
+
+  
+
+
+    <script>
+
+$(function() {
+
+var currentYear = (new Date).getFullYear();
+var currentMonth = (new Date).getMonth();
+var currentDay = (new Date).getDate();
+    
+ $('.datepicker').datepicker({
+    
+    uiLibrary: 'bootstrap4',
+    format: 'yyyy-mm-dd',
+    maxDate: new Date(currentYear, currentMonth, currentDay)
+        });
+
+    });
+    </script>
+
+
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 300
+
+        });
+    });
+
+
+
+
+
+
+
+
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode != 46 &&(charCode < 48 || charCode > 57)))
+        return false;
+    return true;
+}
+
+    </script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+    
+</body>
+ 
+</html>

@@ -1,0 +1,300 @@
+{% extends "app/layout.html" %}
+
+{% block body %}
+
+{% load static %}
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+
+                    <!-- <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card">
+                                            
+                                            <div class="card-body">
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div> 
+        
+                        </div>    -->
+                   
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Edit Employee Record </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Edit Employee Record</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}
+                           <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </a>
+
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    
+                        <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- validation form -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                <div class="card">
+                                    <h5 class="card-header">Edit Employee Details</h5>
+
+                                   
+            
+
+                                    <div class="card-body">
+
+                                       
+                                        
+                                        <form  method="POST"  enctype="multipart/form-data" action="{% url 'employee:edit_employee_record' employee_single_record.employee_job_details.id   %}" id="basicform" data-parsley-validate="">
+                                            {% csrf_token %}
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">First name</label>
+                                                   
+                                                <input id="inputEmail" type="hidden" value="{{employee_single_record.employee_job_details.id}}"   name="id"  required   autocomplete="off" class="form-control">
+                                                                                 
+                                                                           
+                                                <input value="{{employee_single_record.employee_job_details.first_name}}" id="inputUserName" type="text" name="first_name" data-parsley-trigger="change" required placeholder="Enter first name" autocomplete="off" class="form-control">
+                                               
+                                                <small>First name</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Last name</label>
+                                                <input value="{{employee_single_record.employee_job_details.last_name}}" id="inputUserName" type="text" name="last_name" data-parsley-trigger="change" required placeholder="Enter last name" autocomplete="off" class="form-control">
+                                               
+                                                <small>Last name</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Residence</label>
+                                                <input value="{{employee_single_record.employee_job_details.residence}}" id="inputUserName" type="text" name="residence" data-parsley-trigger="change" required placeholder="Enter residence" autocomplete="off" class="form-control">
+                                               
+                                                <small>Last name</small>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Email</label>
+                                                <input value="{{employee_single_record.employee_job_details.email}}" id="inputUserName" type="email" name="email" data-parsley-trigger="change" required placeholder="Enter email" autocomplete="off" class="form-control">
+                                               
+                                                <small>Email</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputEmail">Date of birthday : {{employee_single_record.employee_job_details.dob}} </label>
+                                              
+                                                <div class="input-group date"  data-target-input="nearest">
+                                                    <input value="" required autocomplete="off"  class="datepicker" name="dob" data-date-end-date="0d"  />
+                                                   
+                                                </div>
+                                                <small>Date of birthday</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Hometown</label>
+                                                <input value="{{employee_single_record.employee_job_details.home_town}}" id="inputUserName" type="text" name="home_town" data-parsley-trigger="change" required placeholder="Enter hometown" autocomplete="off" class="form-control">
+                                               
+                                                <small>Hometown</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Place of birth</label>
+                                                <input value="{{employee_single_record.employee_job_details.place_of_birth}}" id="inputUserName" type="text" name="place_of_birth" data-parsley-trigger="change" required placeholder="Enter place of birth" autocomplete="off" class="form-control">
+                                               
+                                                <small>Place of birth</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Postal address</label>
+                                                <input value="{{employee_single_record.employee_job_details.postal_address}}" id="inputUserName" type="text" name="postal_address" data-parsley-trigger="change" required placeholder="Enter Place address" autocomplete="off" class="form-control">
+                                               
+                                                <small>Place address</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Primary contact</label>
+                                                <input value="{{employee_single_record.employee_job_details.primary_contact}}" id="inputUserName" type="text" name="primary_contact" data-parsley-trigger="change" required placeholder="Enter Primary contact" autocomplete="off" class="form-control">
+                                               
+                                                <small>Primary contact</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Secondary contact</label>
+                                                <input value="{{employee_single_record.employee_job_details.secondary_contact}}" id="inputUserName" type="text" name="secondary_contact" data-parsley-trigger="change" required placeholder="Enter Secondary contact" autocomplete="off" class="form-control">
+                                               
+                                                <small>Secondary contact</small>
+                                            </div>
+
+                                          
+
+
+                                            <div class="form-group">
+                                                <label for="inputEmail">Marital status</label>
+                                                <select required  name="marital_status" class="form-control">
+                                                  
+                                                    <option selected>{{employee_single_record.employee_job_details.marital_status}}</option>
+                                                    <option value="Single">Single</option>
+                                                    <option value="Married">Married</option>
+                                                    <option value="Divorced">Divorced</option>
+                                                    <option value="Saparated">Saparated</option>
+                                                    <small>Department</small>
+                                                </select>
+                                                
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Social security number</label>
+                                                <input value="{{employee_single_record.employee_job_details.social_security_number}}" id="inputUserName" type="text" name="social_security_number" data-parsley-trigger="change" required placeholder="Enter Secondary contact" autocomplete="off" class="form-control">
+                                               
+                                                <small>Social security number</small>
+                                            </div>
+
+                                           
+                                          
+<!-- 
+
+                                            <div class="form-group">
+                                                <label for="inputEmail">Upload employee logo</label>
+                                                <input id="inputEmail" type="file" name="picture" data-parsley-trigger="change" required="" placeholder="Enter contact" autocomplete="off" class="form-control">
+                                                <small>Upload employee logo</small>
+                                            </div> -->
+
+                                            <br>
+
+                                            <!-- <h5 class="card-header">Job And Other Details</h5> -->
+
+
+                                            
+                                            <div class="form-group">
+                                                <label for="inputEmail">Department</label>
+                                                <select required  name="department" class="form-control">
+                                                    <option selected>{{employee_single_record.department}}</option>
+                                                    <option value="IT">IT</option>
+                                                    <option value="Operations">Operations</option>
+                                                    <option value="Marketing">Marketing</option>
+                                                    <option value="Security">Security</option>
+                                                    <small>Department</small>
+                                                </select>
+                                                
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="inputEmail">Job Title</label>
+                                                <select required  name="position_title" class="form-control">
+                                                    <option selected>{{employee_single_record.position_title}}</option>
+                                                    <option value="MD">Managing Director</option>
+                                                    <option value="COO">Chief Operation Officer</option>
+                                                    <option value="IT-Admin">IT Administrator</option>
+                                                    
+                                                    <small>Job Title</small>
+                                                </select>
+                                                
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Salary</label>
+                                                <input value="{{employee_single_record.salary}}" id="inputUserName" type="text" name="salary" data-parsley-trigger="change" required placeholder="Enter salary" autocomplete="off" class="form-control">
+                                               
+                                                <small>Salary</small>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Bank</label>
+                                                <input value="{{employee_single_record.bank}}" id="inputUserName" type="text" name="bank" data-parsley-trigger="change" required placeholder="Enter bank" autocomplete="off" class="form-control">
+                                               
+                                                <small>Bank</small>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Bank acc number</label>
+                                                <input value="{{employee_single_record.acc_no}}" id="inputUserName" type="text" name="acc_no" data-parsley-trigger="change" required placeholder="Enter acc number" autocomplete="off" class="form-control">
+                                               
+                                                <small>Bank acc number</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUserName">Bank branch</label>
+                                                <input value="{{employee_single_record.branch}}" id="inputUserName" type="text" name="branch" data-parsley-trigger="change" required placeholder="Enter bank branch" autocomplete="off" class="form-control">
+                                               
+                                                <small>Enter bank branch</small>
+                                            </div>
+
+                                            <br>
+
+                                        
+                                          
+
+                                            <div class="form-group">
+                                                <label for="inputEmail">Comments</label>
+                                                <textarea class="summernote"  name="comments" data-parsley-trigger="change" required placeholder="Enter {{user_business_metric.institution_custom_metric.metric_name}}" autocomplete="off" class="form-control">
+                                                    {{employee_single_record.comments}}
+
+                                                </textarea>
+                                                <small>Comments</small>
+                                            </div>
+
+                                           
+                                            
+                                        
+
+            
+                                            
+                                            <div class="row">
+                                                <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
+                                                    <label class="be-checkbox custom-control custom-checkbox">
+                                                         
+                                                    </label>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <p class="text-left">
+                                                        <button type="submit" name="Published" value="Published" class="btn btn-space btn-primary">Edit Employee Record</button>
+                                                      
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                               
+                            </div>
+                            
+                        </div>
+
+                        
+
+
+                
+
+
+ 
+                     
+                </div>
+            </div>
+
+{% endblock %}

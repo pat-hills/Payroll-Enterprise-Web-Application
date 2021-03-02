@@ -1,0 +1,245 @@
+{% extends "app/layout.html" %}
+
+{% block body %}
+
+{% load static %}
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+
+                    <!-- <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card">
+                                            
+                                            <div class="card-body">
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div> 
+        
+                        </div>    -->
+                   
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Employee Records </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+
+                                            <li class="breadcrumb-item active" aria-current="page">Employee records</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}
+                               <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                               </a>
+    
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+
+                     <div class="row">
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-header d-flex">
+                                    <h4 class="card-header-title">List Of Employees</h4>
+                                    <div class="toolbar ml-auto">
+                                        
+                                           
+                                     
+
+                                        <a href="{% url 'employee:create_employees'  %}" class="btn btn-primary btn-sm ">Add Employee Records</a>
+                                       
+                                      
+                                   
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">#</th>
+                                                  
+                                                    <th class="border-0">Full name</th>
+                                                    <th class="border-0">Contact</th>
+                                                    <th class="border-0">Department</th>
+                                                    <th class="border-0">Residence</th>
+                                                    
+                                                    <th class="border-0"> </th>
+                                                   
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                {% if employee_records %}
+                                                                           
+                                                {% for summary in employee_records %}
+                                                <tr>
+                                                    <td>
+                                                        {{summary.id}}
+                                                      </td>
+                                                    <td>
+                                                      {{summary.employee_job_details.first_name}}   {{summary.employee_job_details.last_name}}
+                                                    </td>
+                                                    <td>  
+                                                        {{summary.employee_job_details.primary_contact}}   
+                                                   
+                                                
+                                                </td>
+                                            </td>
+                                            <td>  
+                                                {{summary.department}}   
+                                           
+                                        
+                                        </td>
+
+                                                <td>  
+                                                    {{summary.employee_job_details.residence}}   
+                                               
+                                            
+                                            </td>
+                                                     
+                                              
+
+                                                    <td>
+                                                        <div class="dropdown float-right">
+                                                            <a href="#" class="" data-toggle="dropdown" aria-expanded="true">
+                                                  <i class="mdi mdi-dots-vertical"></i>
+                                                    </a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                              
+
+                                                              
+                                                               
+
+                                                                <a href="{% url 'employee:view_employee_record' summary.id   %}" class="dropdown-item text-primary"> <i class="fas fa-eye"></i> View </a>
+                                                                <!-- <a href="" class="dropdown-item text-primary"> <i class="fas fa-edit"></i> Edit </a> -->
+                                                                <a href="#" class="dropdown-item text-danger" data-toggle="modal" data-target="#{{summary.id}}"> <i class="fas fa-trash"></i> Delete</a>
+                                                                
+                                                               
+                                                           
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal fade" id="{{summary.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure, you want to delete employee record?</h5>
+                                                                        <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </a>
+                                                                    </div>
+                                        
+                                                                    <div class="modal-body">
+                                                                     
+                                                                        <form  method="POST" action="{% url 'employee:delete_employee_record' summary.id   %}" id="basicform" data-parsley-validate="">
+                                                                            {% csrf_token %}
+                                                                            
+                                                                            
+                                                                                 
+                                                                                <input id="inputEmail" type="hidden" value="{{summary.id}}"   name="id"  required   autocomplete="off" class="form-control">
+                                                                                 
+                                                                           
+                                        
+                                                                          
+                                                                            
+                                                                            <div class="modal-footer">
+                                                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                                                <button type="submit" class="btn btn-space btn-danger">Delete Record</button>
+                                                                            </div>
+                                        
+                                                                            
+                                                                        </form>
+                                        
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </td>
+                                                     
+                                                </tr>
+                                                
+                                                
+                                                {% empty %}
+                                                <li>No Records!!!!.</li>
+                                                {% endfor %}
+                                                {% endif %}
+
+
+                                              
+                                              
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                     </div>
+
+                </div>
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Are you sure, you want to delete employee record?</h5>
+                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </a>
+                            </div>
+
+                            <div class="modal-body">
+                             
+                                <form  method="POST" action="#" id="basicform" data-parsley-validate="">
+                                    {% csrf_token %}
+                                    
+                                    
+                                         
+                                        <input id="inputEmail" type="text" name="metricshortname"  required   autocomplete="off" class="form-control">
+                                         
+                                   
+
+                                  
+                                    
+                                    <div class="modal-footer">
+                                        <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                        <button type="submit" class="btn btn-space btn-primary">Delete Record</button>
+                                    </div>
+
+                                    
+                                </form>
+
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           
+
+{% endblock %}

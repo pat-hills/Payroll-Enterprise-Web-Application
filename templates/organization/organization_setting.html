@@ -1,0 +1,640 @@
+{% extends "app/layout.html" %}
+
+{% block body %}
+
+{% load static %}
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+
+                    <!-- <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card">
+                                            
+                                            <div class="card-body">
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div> 
+        
+                        </div>    -->
+                   
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Organization settings </h2>
+                               
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Organization settings</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- {% if message %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{message}}</strong>
+                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </a>
+                    </div>
+                     {% endif %} -->
+
+
+                     {% if messages %}
+                     {% for message in messages %}
+                         <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+
+                         </div>
+                     {% endfor %}
+                     {% endif %}
+
+                        <div class="row">
+                            <!-- ============================================================== -->
+                            <!-- validation form -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                <div class="card">
+                                    <!-- <h3 class="card-header">Institution custom settings</h3> -->
+
+                                   
+
+                                    <div class="card-body">
+                                        <div class="simple-card">
+                                            <ul class="nav nav-tabs" id="myTab5" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active border-left-0" id="home-tab-simple" data-toggle="tab" href="#Institution-profile" role="tab" aria-controls="home" aria-selected="true">Organization profile</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="profile-tab-simple" data-toggle="tab" href="#Report-metrics" role="tab" aria-controls="profile" aria-selected="false">Allowance Setup</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="contact-tab-simple" data-toggle="tab" href="#contact-simple" role="tab" aria-controls="contact" aria-selected="false">Deduction Setup</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="myTabContent5">
+                                                <div class="tab-pane fade show active" id="Institution-profile" role="tabpanel" aria-labelledby="home-tab-simple">
+                                                    <div class="accrodion-regular">
+                                                        <div id="accordion3">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingSeven">
+                                                                    <h5 class="mb-0">
+                                                                       <button class="btn btn-link" data-toggle="collapse" data-target="#Nameofinstitution" aria-expanded="true" aria-controls="collapseSeven">
+                                                                         <span class="fas fa-angle-down mr-3"></span>Name of Organization
+                                                                       </button>
+                                                                      </h5>
+                                                                </div>
+                                                                <div id="Nameofinstitution" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.name}}</p>
+ 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingEight">
+                                                                    <h5 class="mb-0">
+                                                                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#Tagline" aria-expanded="false" aria-controls="collapseEight">
+                                                                         <span class="fas fa-angle-down mr-3"></span>Tagline
+                                                                     </button>       </h5>
+                                                                </div>
+                                                                <div id="Tagline" class="collapse" aria-labelledby="headingEight" data-parent="#accordion3">
+                                                                    <div class="card-body">
+
+                                                                        <p class="lead"> {{user_organization.tagline}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#Mission" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>Address
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="Mission" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.addresss}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#Vision" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>location
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="Vision" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        
+                                                                        <p class="lead"> {{user_organization.location}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#postal_address" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>postal_address
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="postal_address" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.postal_address}}</p>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#primary_contact" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>primary_contact
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="primary_contact" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.primary_contact}}</p>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#secondary_contact" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>secondary_contact
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="secondary_contact" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.secondary_contact}}</p>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#email" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>email
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="email" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.email}}</p>
+                                                                        
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#webiste" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>webiste
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="webiste" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.webiste}}</p>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" id="headingNine">
+                                                                    <h5 class="mb-0">
+                                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#summary_of_services" aria-expanded="false" aria-controls="collapseNine">
+                                                              <span class="fas fa-angle-down mr-3"></span>summary_of_services
+                                                                     </button>
+                                                                               </h5>
+                                                                </div>
+                                                                <div id="summary_of_services" class="collapse" aria-labelledby="headingNine" data-parent="#accordion3">
+                                                                    <div class="card-body">
+                                                                        <p class="lead"> {{user_organization.summary_of_services}}</p>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <!-- <a href="#" class="btn btn-secondary">Edit institution profile</a> -->
+                                                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#edit_institution_profile">Edit institution profile</a> 
+                                                </div>
+                                                <div class="tab-pane fade" id="Report-metrics" role="tabpanel" aria-labelledby="profile-tab-simple">
+                                                   
+                                                    <p class="lead">Setup Organization Allowances </p>
+
+                                                    <div class="row">
+                                                      
+                                                        <div class="col-lg-12">
+                                                            <div class="section-block">
+                                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Allowance</a> 
+                                                              
+                                                                <p>
+                                                                    <h3 class="section-title">List of Allowances</h3>
+                                                                </p>
+                                                                
+                                                            </div>
+                                                            <div class="card">
+                                                            
+                                                                <div class="campaign-table table-responsive">
+                                                                  
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr class="border-0">
+                                                                                <th class="border-0">Allowance name</th>
+                                                                                <th class="border-0">Allowance Amount Value</th>
+                                                                                
+                                                                               
+                                                                                <th class="border-0">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+
+                                                                            {% if user_organization_allowance %}
+                                                                           
+                                                                            {% for data in user_organization_allowance %}
+                                                                            <tr>
+                                                                                <td>
+                                                                                  {{data.name}}
+                                                                                </td>
+                                                                                <td> {{data.amount}} </td>
+                                                                               
+
+                                                                                <td>
+                                                                                    <div class="dropdown float-right">
+                                                                                        <a href="#" class="dropdown-toggle  card-drop" data-toggle="dropdown" aria-expanded="true">
+                                                                              <i class="mdi mdi-dots-vertical"></i>
+                                                                                </a>
+                                                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                                                            <!-- item-->
+                                                                                            <a href="{{data.id}}" class="dropdown-item">View/Edit</a>
+                                                                                            
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                 
+                                                                            </tr>
+                                                                            
+                                                                            
+                                                                            {% empty %}
+                                                                            <li>No Records!!!!.</li>
+                                                                            {% endfor %}
+                                                                            {% endif %}
+
+                                                                         
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="tab-pane fade" id="contact-simple" role="tabpanel" aria-labelledby="contact-tab-simple">
+                                                     
+                                                    <p class="lead">Setup Organization Deduction </p>
+
+                                                    <div class="row">
+                                                      
+                                                        <div class="col-lg-12">
+                                                            <div class="section-block">
+                                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#allowances_deductions">Add Deduction</a> 
+                                                              
+                                                                <p>
+                                                                    <h3 class="section-title">List of deductions</h3>
+                                                                </p>
+                                                                
+                                                            </div>
+                                                            <div class="card">
+                                                            
+                                                                <div class="campaign-table table-responsive">
+                                                                  
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                            <tr class="border-0">
+                                                                                <th class="border-0">Name</th>
+                                                                                <th class="border-0">Unit Category</th>
+                                                                                <th class="border-0">Unit Amount / Percentage</th>
+                                                                               
+                                                                               
+                                                                                <th class="border-0">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+
+                                                                            {% if user_organization_deduction %}
+                                                                           
+                                                                            {% for data in user_organization_deduction %}
+                                                                            <tr>
+                                                                                <td>
+                                                                                  {{data.name}}
+                                                                                </td>
+                                                                                <td> {{data.unit_of_category}} </td>
+
+                                                                                <td> {{data.unit_of_value}} </td>
+                                                                               
+
+                                                                                <td>
+                                                                                    <div class="dropdown float-right">
+                                                                                        <a href="#" class="dropdown-toggle  card-drop" data-toggle="dropdown" aria-expanded="true">
+                                                                              <i class="mdi mdi-dots-vertical"></i>
+                                                                                </a>
+                                                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                                                            <!-- item-->
+                                                                                            <a href="{{data.id}}" class="dropdown-item">View/Edit</a>
+                                                                                            
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                 
+                                                                            </tr>
+                                                                            
+                                                                            
+                                                                            {% empty %}
+                                                                            <li>No Records!!!!.</li>
+                                                                            {% endfor %}
+                                                                            {% endif %}
+
+                                                                         
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                               
+                                               
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+
+                               
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create Allowance</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </a>
+                                </div>
+                                <div class="modal-body">
+                                 
+                                    <form  method="POST" action="{% url 'organization:create_organization_allowances' %}" id="basicform" data-parsley-validate="">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="inputUserName">Name of allowance*</label>
+                                            <input id="inputUserName" type="text" name="allowance_name" data-parsley-trigger="change" required placeholder="Enter name of allowance" autocomplete="off" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail">Amount allocation*</label>
+                                            <input id="inputEmail" type="text" onkeypress="return isNumberKey(event)" name="allowance_amount" data-parsley-trigger="change" required placeholder="Enter amount allocation" autocomplete="off" class="form-control">
+                                            <small>Any amount of the name of allowance entered</small>
+                                        </div>
+
+                                        
+
+                                       
+ 
+
+                                    
+                                      
+                                        
+                                        <div class="modal-footer">
+                                            <!-- <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a> -->
+                                            <button type="submit" class="btn btn-space btn-primary">Save </button>
+                                        </div>
+
+                                        
+                                    </form>
+
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <!-- ALLOWANCES DEDUCTIONS -->
+
+
+
+
+   <div class="modal fade" id="allowances_deductions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Setup Or Add Deductions On Salaries</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </a>
+                                </div>
+                                <div class="modal-body">
+                                 
+                                    <form  method="POST" action="{% url 'organization:create_organization_deduction' %}" id="basicform" data-parsley-validate="">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="inputUserName">Name of deduction*</label>
+                                            <input id="inputUserName" type="text" name="deduction_name" data-parsley-trigger="change" required placeholder="Enter name of deduction" autocomplete="off" class="form-control">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputEmail">Unit of measure*</label>
+                                            <select required  name="deduction_unit_measurement" class="form-control">
+                                                <option selected>----------</option>
+                                                <option>Monetary</option>
+                                               
+                                                <option>Percentage(%)</option>
+                                            
+                                            </select>
+                                            
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputEmail">Amount or percentage of allocation*</label>
+                                            <input id="amount_percentage" type="text" onkeypress="return isNumberKey(event)" name="deduction_value" data-parsley-trigger="change" required placeholder="Enter monetary amount or numeric percentage value" autocomplete="off" class="form-control">
+                                           
+                                            <small>Monetary values could be 100s, 1000s, 10000s and percentage is in its 100% values could be 1,2,3,4,5..etc</small>
+                                        
+                                        </div>
+
+           
+
+                                    
+                                      
+                                        
+                                        <div class="modal-footer">
+                                            <!-- <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a> -->
+                                            <button type="submit" class="btn btn-space btn-primary">Save</button>
+                                        </div>
+
+                                        
+                                    </form>
+
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- EDIT INSTITUTION DETAILS -->
+
+
+
+
+
+
+   <div class="modal fade" id="edit_institution_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Organization Details</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </a>
+                                </div>
+                                <div class="modal-body">
+                                 
+                                    <form  method="POST" enctype="multipart/form-data" action="{% url 'organization:update_organization_details' %}" id="basicform" data-parsley-validate="">
+                                        {% csrf_token %}
+
+                                        <input id="inputUserName" type="hidden" name="id" data-parsley-trigger="change" value="{{user_organization.id}}" required placeholder="Enter name of deduction" autocomplete="off" class="form-control">
+                                       
+                                        <div class="form-group">
+                                            <label for="inputUserName">Organization*</label>
+                                            <input id="inputUserName" type="text" name="name" data-parsley-trigger="change" value="{{user_organization.name}}" required placeholder="Enter Name Of Organization" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Tagline*</label>
+                                            <input id="inputUserName" type="text" name="tagline" data-parsley-trigger="change" value="{{user_organization.tagline}}" required placeholder="Enter Tagline" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Address*</label>
+                                            <input id="inputUserName" type="text" name="physical_address" data-parsley-trigger="change" value="{{user_organization.addresss}}" required placeholder="Enter Address" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Location*</label>
+                                            <input id="inputUserName" type="text" name="location" data-parsley-trigger="change" value="{{user_organization.location}}" required placeholder="Enter Location" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Postal Address*</label>
+                                            <input id="inputUserName" type="text" name="postal_address" data-parsley-trigger="change" value="{{user_organization.postal_address}}" required placeholder="Enter Postal Address" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Telephone*</label>
+                                            <input id="inputUserName" type="text" name="primary_contact" data-parsley-trigger="change" value="{{user_organization.primary_contact}}" required placeholder="Enter Telephone" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Email*</label>
+                                            <input id="inputUserName" type="text" name="email" data-parsley-trigger="change" value="{{user_organization.email}}" required placeholder="Enter Email" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Website*</label>
+                                            <input id="inputUserName" type="text" name="website" data-parsley-trigger="change" value="{{user_organization.webiste}}" required placeholder="Enter Website" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputUserName">Summary Of Services*</label>
+                                            <input id="inputUserName" type="text" name="summary_of_services" data-parsley-trigger="change" value="{{user_organization.summary_of_services}}" required placeholder="Enter Summary Of Services" autocomplete="off" class="form-control">
+                                       
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputEmail">Upload Logo</label>
+                                            <input id="inputEmail" type="file" name="logo" data-parsley-trigger="change" required="" placeholder="Enter contact" autocomplete="off" class="form-control">
+                                        </div>
+
+ 
+
+ 
+           
+
+                                    
+                                      
+                                        
+                                        <div class="modal-footer">
+                                            <!-- <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a> -->
+                                            <button type="submit" class="btn btn-space btn-primary">Save</button>
+                                        </div>
+
+                                        
+                                    </form>
+
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+
+{% endblock %}

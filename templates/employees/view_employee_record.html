@@ -1,0 +1,332 @@
+{% extends "app/layout.html" %}
+
+{% block body %}
+
+{% load static %}
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+
+                  
+                   
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">View Employee Record </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+
+                                            <li class="breadcrumb-item active" aria-current="page">View employee record</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                    {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}
+                           <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </a>
+
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+
+
+                    <div class="navbar bg-white breadcrumb-bar border-bottom">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">
+            
+                                    
+            
+                                                               
+                                    <span class="badge-dot badge-success mr-1"></span>Date created
+                             
+                                   
+            
+            
+                                </a>
+            
+            
+                                </li>
+                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-calendar-alt"></i>
+                                   {{employee_single_record.employee_job_details.date_created}}
+            
+            
+            
+                                </a>
+                                </li>
+                                
+                            </ol>
+                        </nav>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-light btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                               
+                                <a class="dropdown-item" href="{% url 'employee:edit_employee_record' employee_single_record.employee_job_details.id   %}"><i class="fas fa-edit"></i> Edit</a>
+                                <div class="dropdown-divider"></div>
+                               
+                                
+                              
+                            </div>
+                        </div>
+                    </div> </br>
+
+
+
+                    <div class="row">
+                        <!-- ============================================================== -->
+                        <!-- profile -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                            <!-- ============================================================== -->
+                            <!-- card profile -->
+                            <!-- ============================================================== -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="user-avatar text-center d-block">
+                                        <img src="{{MEDIA_URL }}{{employee_single_record.employee_job_details.picture}}" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                    </div>
+                                    <div class="text-center">
+                                        <h2 class="font-24 mb-0">{{employee_single_record.employee_job_details.last_name}} {{employee_single_record.employee_job_details.first_name}}</h2>
+                                       <p><i>social security : </i>{{employee_single_record.employee_job_details.social_security_number}} </p> 
+                                    </div>
+                                </div>
+                                <div class="card-body border-top">
+                                    <h3 class="font-16">Contact Information</h3>
+                                    <div class="">
+                                        <ul class="list-unstyled mb-0">
+                                        <li class="mb-2"><i class="fas fa-fw fa-envelope mr-2"></i>{{employee_single_record.employee_job_details.email}}</li>
+                                        <li class="mb-0"><i class="fas fa-fw fa-phone mr-2"></i>{{employee_single_record.employee_job_details.primary_contact}}</li>
+                                        <li class="mb-0"><i class="fas fa-fw fa-map-marker-alt mr-2"></i> {{employee_single_record.employee_job_details.residence}}</li>
+                                   
+                                    </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body border-top">
+                                    <!-- <h3 class="font-16">Rating</h3>
+                                    <h1 class="mb-0">4.8</h1>
+                                    <div class="rating-star">
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <i class="fa fa-fw fa-star"></i>
+                                        <p class="d-inline-block text-dark">14 Reviews </p>
+                                    </div> -->
+                                </div>
+                                <div class="card-body border-top">
+                                    <!-- <h3 class="font-16">Social Channels</h3>
+                                    <div class="">
+                                        <ul class="mb-0 list-unstyled">
+                                        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-facebook-square mr-1 facebook-color"></i>fb.me/michaelchristy</a></li>
+                                        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-twitter-square mr-1 twitter-color"></i>twitter.com/michaelchristy</a></li>
+                                        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-instagram mr-1 instagram-color"></i>instagram.com/michaelchristy</a></li>
+                                        <li class="mb-1"><a href="#"><i class="fas fa-fw fa-rss-square mr-1 rss-color"></i>michaelchristy.com/blog</a></li>
+                                        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-pinterest-square mr-1 pinterest-color"></i>pinterest.com/michaelchristy</a></li>
+                                        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-youtube mr-1 youtube-color"></i>youtube/michaelchristy</a></li>
+                                    </ul>
+                                    </div> -->
+                                </div>
+                               
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end card profile -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end profile -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- campaign data -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                            <!-- ============================================================== -->
+                            <!-- campaign tab one -->
+                            <!-- ============================================================== -->
+                            <div class="influence-profile-content pills-regular">
+                                <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Job And Other Information</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-selected="false">More Information On Employee</a>
+                                    </li>
+                                   
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="section-block">
+                                                    <h3 class="section-title"> </h3>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h2 class="mb-1">GHS {{employee_single_record.salary}}</h2>
+                                                        <p>Employee Salary </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h2 class="mb-1">{{employee_single_record.department}}</h2>
+                                                        <p>Department</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h2 class="mb-1">{{employee_single_record.position_title}}</h2>
+                                                        <p>Position</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h1 class="mb-1">1</h1>
+                                                        <p>Declined Campaigns</p>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+
+
+                                        <div class="section-block">
+                                            <h3 class="section-title"></h3>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body ">
+                                                                <div class="influencer-profile-data">
+                                                                    <h3 class="m-b-10">Bank details</h3>
+                                                                    <p>
+                                                                         
+                                                                        Bank : 
+                                                                            <span class="m-l-10 text-secondary">{{employee_single_record.bank}}</span>
+                                                                        
+                                                                    </p>
+
+                                                                    <p>
+                                                                         
+                                                                        Branch : 
+                                                                            <span class="m-l-10 text-secondary">{{employee_single_record.branch}}</span>
+                                                                        
+                                                                    </p>
+
+                                                                    <p>
+                                                                         
+                                                                        Account number : 
+                                                                            <span class="m-l-10 text-secondary">{{employee_single_record.acc_no}}</span>
+                                                                        
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border-top card-footer p-0">
+                                                
+                                            </div>
+                                        </div>
+
+                                     
+                                       
+                                    </div>
+
+                           
+
+                                    <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+                                        <div class="card">
+                                            <h5 class="card-header">More information on employee</h5>
+                                            <div class="card-body">
+                                                <div class="review-block">
+                                                    <p class="review-text font-italic m-0">{{employee_single_record.employee_job_details.dob}}</p>
+                                                    
+                                                    <span class="text-dark font-weight-bold">Date of birth</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-body border-top">
+                                                <div class="review-block">
+                                                    <p class="review-text font-italic m-0">{{employee_single_record.employee_job_details.place_of_birth}}</p>
+                                                    
+                                                    <span class="text-dark font-weight-bold">Place of birth</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-body border-top">
+                                                <div class="review-block">
+                                                    <p class="review-text font-italic m-0">{{employee_single_record.employee_job_details.home_town}}</p>
+                                                    
+                                                    <span class="text-dark font-weight-bold">Home town</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-body border-top">
+                                                <div class="review-block">
+                                                    <p class="review-text font-italic m-0">{{employee_single_record.employee_job_details.postal_address}}</p>
+                                                   
+                                                    <span class="text-dark font-weight-bold">Postal address</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body border-top">
+                                                <div class="review-block">
+                                                    <p class="review-text font-italic m-0">{{employee_single_record.employee_job_details.marital_status}}</p>
+                                                    
+                                                    <span class="text-dark font-weight-bold">Marital Status</span>
+                                                </div>
+                                            </div>
+
+                                          
+
+ 
+  
+
+ 
+
+ 
+
+
+                                        </div>
+                                        
+                                    </div>
+                            
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end campaign tab one -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end campaign data -->
+                        <!-- ============================================================== -->
+                    </div>
+
+                   
+                </div>
+            </div>
+
+           
+
+{% endblock %}
